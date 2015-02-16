@@ -5,19 +5,40 @@
   <div class="page-header">
     <h1>Welcome to Twitter.js, Nimit!</h1>
   </div>
+
+
   <div class="row">
     <div class="col-md-3">
       <img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><br>
-      <b>Your Name</b><br>
+      <b>{{user_name}}</b><br>
       100 followers
     </div>
     <div class="col-md-9">
+    <div class="row">
+      {% if showForm %}
+        <form action="/submit" method="POST">
+          <label for="name_field">Name:</label>
+          <input name="name" value="{{name}}" type="text" id="name_field" />
 
+          <label for="text_field">Text:</label>
+          <input name="text" type="text" id="text_field" style="width: 350px;" />
+
+          <input type="submit" value="Submit" />
+        </form>
+      {% endif %}
+
+
+      </div>
       <!-- display tweets here -->
+      <div id="tweets">
       {% for tweet in tweets %}
-        <li>{{tweet.text}}</li>
+        <div class="tweetbox">
+        <b><a href="/users/{{tweet.name}}">{{tweet.name}}</a></b>
+        <img class="tweetbox"></img>
+        <p class="content"><a href="/users/{{tweet.name}}/tweets/{{tweet.tweet_id}}">{{tweet.text}}</a></p>
+        </div>
       {% endfor %}
-
+    </div>
     </div>
   </div>
 

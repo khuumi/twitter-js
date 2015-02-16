@@ -1,14 +1,15 @@
 (function(){
-
-
   'use strict';
 
   var _ = require('underscore');
 
+  var random_id = 0;
+
   var data = [];
 
   var add = function(name, text) {
-    data.push({ name: name, text: text});
+    random_id += 1;
+    data.push({ name: name, text: text, tweet_id:random_id});
   };
 
   var list = function() {
@@ -39,12 +40,6 @@
   for(var i=0; i<10; i++) {
     module.exports.add( getFakeName(), getFakeTweet() );
   }
-
-
-
-
-
-  console.log(data);
 
 
 
